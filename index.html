@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nurfarisha Binti Mohd Kamal — Data & IT Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Playfair+Display:ital,wght@1,500;1,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBFBF7;
+    --panel:#F1F1EA;
+    --ink:#0C0C10;
+    --muted:#6B6B70;
+    --blue:#2F49FF;
+    --blue-deep:#1E33D6;
+    --line:#E3E3DA;
+    --radius:14px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  ::selection{background:var(--blue);color:#fff;}
+  img{max-width:100%;display:block;}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 28px;max-width:1120px;margin:0 auto;}
+  .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-0.01em;}
+  .navlinks{display:flex;gap:30px;font-size:14px;font-weight:500;}
+  .navlinks a{position:relative;padding-bottom:2px;}
+  .navlinks a:hover{color:var(--blue);}
+  .pill-status{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    border:1px solid var(--ink);border-radius:30px;padding:8px 16px;
+    display:flex;align-items:center;gap:7px;
+  }
+  .pill-status .dot{width:7px;height:7px;border-radius:50%;background:var(--blue);}
+  @media(max-width:760px){.navlinks{display:none;}}
+
+  /* HERO */
+  .hero{padding:64px 0 0;overflow:hidden;}
+  .hero-top{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:10px;}
+  .hero-line1{
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
+    font-size:clamp(38px,6vw,72px);line-height:1;
+  }
+  .hero-photo{
+    width:clamp(180px,20vw,260px);
+    aspect-ratio:3/3.6;border-radius:20px 20px 4px 4px;overflow:hidden;
+    align-self:end;margin-bottom:-6px;
+    filter:grayscale(100%) contrast(1.05);
+  }
+  .hero-line2{
+    font-family:'Space Grotesk',sans-serif;font-weight:700;
+    font-size:clamp(42px,7.4vw,86px);line-height:0.92;letter-spacing:-0.02em;
+    color:var(--blue);text-align:right;
+  }
+  .hero-mid{
+    display:grid;grid-template-columns:1fr 1fr;gap:24px;
+    padding:28px 0 44px;border-bottom:1px solid var(--line);
+    align-items:end;
+  }
+  .hero-spec{font-size:12.5px;font-weight:600;letter-spacing:0.02em;text-transform:uppercase;max-width:260px;}
+  .hero-spec .rule{width:34px;height:2px;background:var(--ink);margin-bottom:12px;}
+  .hero-right{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;}
+  .btn-chat{
+    background:var(--blue);color:#fff;font-weight:600;font-size:14px;
+    padding:16px 30px;border-radius:40px;white-space:nowrap;transition:background .2s, transform .2s;
+  }
+  .btn-chat:hover{background:var(--blue-deep);transform:translateY(-2px);}
+  .hero-desc{font-size:13px;color:var(--muted);max-width:220px;text-align:right;}
+  @media(max-width:760px){
+    .hero-top{grid-template-columns:1fr;text-align:center;}
+    .hero-photo{margin:14px auto;}
+    .hero-line2{text-align:center;}
+    .hero-mid{grid-template-columns:1fr;text-align:center;}
+    .hero-spec{margin:0 auto;}
+    .hero-right{flex-direction:column;align-items:center;}
+    .hero-desc{text-align:center;}
+  }
+
+  /* SKILLS - blue band */
+  .skills-band{background:var(--blue);color:#fff;padding:70px 0;overflow:hidden;}
+  .skills-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:48px;}
+  .skills-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(34px,5vw,52px);line-height:1;}
+  .skills-title em{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;display:block;}
+  .skills-note{font-size:13.5px;max-width:230px;opacity:0.85;}
+  .btn-white{
+    background:#fff;color:var(--ink);font-weight:600;font-size:13.5px;
+    padding:13px 24px;border-radius:30px;display:inline-block;margin-top:14px;
+    transition:transform .2s;
+  }
+  .btn-white:hover{transform:translateY(-2px);}
+  .pill-field{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .skill-pill{
+    background:#fff;color:var(--ink);font-family:'Playfair Display',serif;font-style:italic;font-weight:500;
+    font-size:15px;padding:14px 22px;border-radius:40px;
+    box-shadow:0 10px 22px -8px rgba(0,0,0,0.35);
+  }
+  .skill-pill:nth-child(3n+1){transform:rotate(-4deg);}
+  .skill-pill:nth-child(3n+2){transform:rotate(3deg);}
+  .skill-pill:nth-child(3n){transform:rotate(-2deg);}
+
+  /* SECTION shared */
+  .section{padding:76px 0;}
+  .section-eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);
+    text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;
+  }
+  .section-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(28px,4vw,40px);margin-bottom:40px;}
+  .section-title em{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;color:var(--blue);}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;align-items:start;}
+  .about-photo-stack{position:relative;margin-bottom:34px;}
+  .about-photo{border-radius:18px;overflow:hidden;border:1px solid var(--line);filter:grayscale(20%);}
+  .about-photo-2{
+    position:absolute;bottom:-24px;right:-24px;width:50%;
+    border-radius:14px;overflow:hidden;border:4px solid var(--bg);
+    box-shadow:0 20px 40px -16px rgba(0,0,0,0.25);
+  }
+  .about-text p{color:var(--muted);font-size:15.5px;margin-bottom:14px;}
+  .chip-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .chip{
+    background:var(--panel);border:1px solid var(--line);border-radius:30px;
+    padding:9px 16px;font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:7px;
+  }
+  .chip .star{color:var(--blue);}
+  .stat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px;}
+  .stat-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 10px;text-align:center;}
+  .stat-card .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:24px;color:var(--blue);}
+  .stat-card .lbl{font-size:11px;color:var(--muted);margin-top:4px;font-family:'JetBrains Mono',monospace;}
+
+  /* PROJECTS */
+  .project-list{display:flex;flex-direction:column;gap:20px;}
+  .project-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:28px;display:grid;grid-template-columns:120px 1fr;gap:24px;
+    transition:border-color .2s, transform .2s;
+  }
+  .project-card:hover{border-color:var(--blue);transform:translateY(-2px);}
+  .project-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
+  .project-status{
+    display:inline-block;margin-top:8px;font-size:10.5px;font-family:'JetBrains Mono',monospace;
+    padding:3px 8px;border-radius:20px;background:rgba(47,73,255,0.1);color:var(--blue);
+  }
+  .project-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;margin-bottom:9px;}
+  .project-desc{color:var(--muted);font-size:14.5px;margin-bottom:10px;}
+  .project-desc ul{padding-left:18px;}
+  .project-desc li{margin-bottom:4px;}
+  .project-stack{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;}
+  .project-stack span{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--blue-deep);
+    border:1px solid rgba(47,73,255,0.25);padding:3px 10px;border-radius:20px;
+  }
+  .medal{margin-top:10px;font-size:12.5px;color:#B8860B;display:inline-flex;align-items:center;gap:6px;font-weight:600;}
+  .project-links{display:flex;gap:10px;margin-top:14px;}
+  .project-links a{
+    font-family:'JetBrains Mono',monospace;font-size:12px;
+    border:1px solid var(--line);padding:6px 13px;border-radius:20px;background:#fff;
+    transition:border-color .2s, color .2s;
+  }
+  .project-links a:hover{border-color:var(--blue);color:var(--blue);}
+  .shot-placeholder{
+    display:flex;align-items:center;justify-content:center;gap:6px;
+    padding:26px 16px;color:var(--muted);font-size:12px;font-family:'JetBrains Mono',monospace;
+    border:1px dashed var(--line);border-radius:10px;margin-top:14px;background:#fff;
+  }
+
+  @media(max-width:760px){
+    .about-grid{grid-template-columns:1fr;}
+    .project-card{grid-template-columns:1fr;}
+  }
+
+  /* CREDENTIALS + EDU */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+  .list-panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px;}
+  .list-panel h3{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px;}
+  .list-panel ul{list-style:none;}
+  .list-panel li{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px;}
+  .list-panel li:last-child{border-bottom:none;}
+  .li-date{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);white-space:nowrap;}
+  @media(max-width:760px){.two-col{grid-template-columns:1fr;}}
+
+  .edu-item{display:grid;grid-template-columns:140px 1fr;gap:22px;padding:18px 0;border-bottom:1px solid var(--line);}
+  .edu-item:last-child{border-bottom:none;}
+  .edu-item .yr{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);}
+  .edu-item h4{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16.5px;margin-bottom:4px;}
+  .edu-item p{color:var(--muted);font-size:14px;}
+  @media(max-width:760px){.edu-item{grid-template-columns:1fr;gap:6px;}}
+
+  /* CONTACT - bold dark */
+  .contact-band{background:var(--ink);color:#fff;padding:80px 0;}
+  .contact-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(30px,5vw,50px);margin-bottom:14px;}
+  .contact-title em{font-family:'Playfair Display',serif;font-style:italic;font-weight:500;color:#8FA0FF;}
+  .contact-sub{color:#B8B8BE;max-width:440px;margin-bottom:36px;font-size:15px;}
+  .contact-links{display:flex;flex-direction:column;gap:0;max-width:520px;}
+  .contact-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.15);
+    font-family:'JetBrains Mono',monospace;font-size:14px;transition:padding-left .2s;
+  }
+  .contact-row:hover{padding-left:8px;color:#8FA0FF;}
+  .contact-row .lbl{color:#8B8B92;font-size:11px;text-transform:uppercase;letter-spacing:0.05em;}
+
+  footer{
+    text-align:center;padding:28px 24px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--ink);
+    border-top:1px solid rgba(255,255,255,0.1);color:#8B8B92;
+  }
+
+  [data-reveal]{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].in{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">NURFARISHA.</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#credentials">Credentials</a>
+    </div>
+    <a href="#contact" class="pill-status"><span class="dot"></span>OPEN TO WORK</a>
+  </nav>
+</header>
+
+<section class="hero wrap">
+  <div class="hero-top">
+    <div class="hero-line1">I'm a</div>
+    <div class="hero-photo">
+      <img src="images/farisha-photo.jpg" alt="Nurfarisha Binti Mohd Kamal">
+    </div>
+    <div class="hero-line2">DATA<br>ANALYST</div>
+  </div>
+  <div class="hero-mid">
+    <div class="hero-spec">
+      <div class="rule"></div>
+      Specialized in data visualization, SQL databases, and Python analytics.
+    </div>
+    <div class="hero-right">
+      <a href="#contact" class="btn-chat">Let's chat</a>
+      <p class="hero-desc">Fresh IT (Big Data) graduand ready to turn your raw data into decisions your team can act on.</p>
+    </div>
+  </div>
+</section>
+
+<section class="skills-band" id="skills" data-reveal>
+  <div class="wrap">
+    <div class="skills-head">
+      <div class="skills-title">ALL MY<em>data tools</em></div>
+      <div>
+        <p class="skills-note">Every tool I reach for to turn a messy spreadsheet into a decision someone can act on.</p>
+        <a href="#projects" class="btn-white">See it in action</a>
+      </div>
+    </div>
+    <div class="pill-field">
+      <span class="skill-pill">Python</span>
+      <span class="skill-pill">Power BI</span>
+      <span class="skill-pill">SQL</span>
+      <span class="skill-pill">MySQL</span>
+      <span class="skill-pill">Java</span>
+      <span class="skill-pill">R</span>
+      <span class="skill-pill">HTML/CSS/JS</span>
+      <span class="skill-pill">Excel</span>
+      <span class="skill-pill">Android Studio</span>
+      <span class="skill-pill">Google Colab</span>
+      <span class="skill-pill">GitHub</span>
+      <span class="skill-pill">Canva</span>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="about" data-reveal>
+  <div class="section-eyebrow">01 · About</div>
+  <div class="about-grid">
+    <div class="about-photo-stack">
+      <div class="about-photo">
+        <img src="images/farisha-photo.jpg" alt="Nurfarisha Binti Mohd Kamal">
+      </div>
+      <div class="about-photo-2">
+        <img src="images/farisha-photo-2.jpg" alt="Nurfarisha Binti Mohd Kamal">
+      </div>
+    </div>
+    <div>
+      <h2 class="section-title">Who <em>I am</em></h2>
+      <div class="about-text">
+        <p>I've completed my Bachelor of Information Technology (Hons.) at Universiti Teknologi MARA (UiTM), Shah Alam — specialising in the Big Data track — and just wrapped up my internship. I'm currently awaiting convocation and looking for a full-time role where I can put my data and systems skills to work.</p>
+        <p>My focus is data visualization and analysis (Power BI, Python, SQL), backed by hands-on experience building systems end-to-end — from database design to functioning web and mobile apps. I like problems where messy data needs to become a decision someone can actually act on.</p>
+        <p>Outside of coursework, I've competed in a data hackathon, helped win a Silver Medal at an international innovation symposium, and made the Dean's List twice.</p>
+      </div>
+      <div class="chip-row">
+        <div class="chip"><span class="star">★</span> Dean's List Awardee ×2</div>
+        <div class="chip"><span class="star">★</span> KL3IS Silver Medal</div>
+        <div class="chip"><span class="star">★</span> 3× Oracle/Power BI Certified</div>
+      </div>
+      <div class="stat-cards">
+        <div class="stat-card"><div class="num">3.22</div><div class="lbl">CGPA</div></div>
+        <div class="stat-card"><div class="num">9+</div><div class="lbl">Projects Built</div></div>
+        <div class="stat-card"><div class="num">2×</div><div class="lbl">Dean's List</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="projects" data-reveal style="padding-top:0;">
+  <div class="section-eyebrow">02 · Projects</div>
+  <h2 class="section-title">What I've <em>built</em></h2>
+  <div class="project-list">
+
+    <div class="project-card">
+      <div>
+        <div class="project-date">Due Jan 2026</div>
+        <div class="project-status">Final Year Project</div>
+      </div>
+      <div>
+        <div class="project-title">SmartDiet — Data Visualization for Estimated Diet Needs</div>
+        <div class="project-desc">
+          An intelligent system that predicts optimal daily dietary needs by analysing physical activity patterns and nutritional data.
+          <ul>
+            <li>Built an interactive Power BI dashboard delivering personalised, actionable dietary insights</li>
+            <li>Applied data cleaning, transformation, and statistical modelling in Python/Pandas for reliable estimates</li>
+          </ul>
+        </div>
+        <div class="project-stack"><span>Python</span><span>Pandas</span><span>Power BI</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div><div class="project-date">Jul 2025</div></div>
+      <div>
+        <div class="project-title">Campus Buddy — Mobile Application</div>
+        <div class="project-desc">
+          <ul>
+            <li>Engineered a campus information system prototype for UiTM students</li>
+            <li>Implemented core modules — Newsfeed, E-Services, E-Learning — integrated with a database</li>
+          </ul>
+        </div>
+        <div class="project-stack"><span>Android Studio</span><span>Java</span><span>SQL</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div><div class="project-date">Jul 2025</div></div>
+      <div>
+        <div class="project-title">Online Membership System — Spa</div>
+        <div class="project-desc">
+          <ul>
+            <li>Designed a web-based membership management system automating registration, renewal, and fee tracking</li>
+            <li>Built a structured database and web interface to improve administrative efficiency</li>
+          </ul>
+        </div>
+        <div class="project-stack"><span>MySQL</span><span>HTML/CSS</span><span>JavaScript</span></div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div><div class="project-date">Jun 2024</div></div>
+      <div>
+        <div class="project-title">MediSmart — Health Care Application</div>
+        <div class="project-desc">
+          <ul>
+            <li>Designed and prototyped UX/UI for appointment scheduling and health records management</li>
+            <li>Collaborated in a team to deliver a functional, presentation-ready product</li>
+          </ul>
+        </div>
+        <div class="medal">🥈 Silver Medal — Kuala Lumpur International Innovation and Invention Symposium (KL3IS)</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div><div class="project-date">Nov 2024</div></div>
+      <div>
+        <div class="project-title">Data Hackathon — Seminar Melaka Intelligence Centre</div>
+        <div class="project-desc">
+          <ul>
+            <li>Solved a regional data challenge using public datasets under strict time constraints</li>
+            <li>Applied data processing and visualization skills in a competitive team setting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div><div class="project-date">Personal</div><div class="project-status">RAG chatbot</div></div>
+      <div>
+        <div class="project-title">JLIP FAQ Chatbot</div>
+        <div class="project-desc">
+          A 24/7 knowledge-retrieval chatbot built for UTHM's Industrial Training Department (JLIP), answering student questions on internship forms, rules, and placement deadlines straight from official department documents.
+          <ul>
+            <li>Built with a Retrieval-Augmented Generation (RAG) pipeline: FAISS vector search over official PDFs/guidelines, answered through the Gemini 1.5-Flash API</li>
+            <li>Deployed a live, conversational Streamlit interface that responds naturally in Malay</li>
+          </ul>
+        </div>
+        <div class="project-stack"><span>Python</span><span>Streamlit</span><span>FAISS</span><span>Gemini API</span></div>
+        <div class="shot-placeholder">📸 Add a screenshot of the chatbot UI here</div>
+        <div class="project-links">
+          <a href="https://github.com/Farishakamal/jlip-li-chatbot" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://jlip-li-chatbot-xciv4vrrjdjez2hzw42gz3.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div><div class="project-date">Personal</div><div class="project-status">Full-stack web</div></div>
+      <div>
+        <div class="project-title">Wedding Dress Rental System</div>
+        <div class="project-desc">
+          A full-stack web app for browsing, booking, and managing wedding dress rentals.
+          <ul>
+            <li>Secure login/registration, with booking validation that blocks double-booking a dress on the same date</li>
+            <li>Built a user dashboard for viewing, editing, and cancelling bookings, plus a review/testimonial system</li>
+            <li>Custom interactive UI: horizontal image slider and pop-up modals</li>
+          </ul>
+        </div>
+        <div class="project-stack"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>HTML/CSS</span></div>
+        <div class="shot-placeholder">📸 Add a screenshot of the site here</div>
+        <div class="project-links">
+          <a href="https://github.com/Farishakamal/wedding-dress-rental" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div><div class="project-date">Personal</div><div class="project-status">Browser game</div></div>
+      <div>
+        <div class="project-title">Pingu's Snack Time</div>
+        <div class="project-desc">
+          A browser-based arcade game built on HTML5 Canvas, with score tracking, a lives system, and a game-over/restart flow.
+          <ul>
+            <li>Custom canvas rendering and game loop logic in vanilla JavaScript</li>
+            <li>Responsive on-screen controls for mobile play</li>
+          </ul>
+        </div>
+        <div class="project-stack"><span>HTML5 Canvas</span><span>JavaScript</span><span>CSS</span></div>
+        <div class="shot-placeholder">📸 Add a gameplay screenshot here</div>
+        <div class="project-links">
+          <a href="https://github.com/Farishakamal/pingus-snack-time" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div><div class="project-date">Coursework</div><div class="project-status">Android app</div></div>
+      <div>
+        <div class="project-title">Electricity Bill Estimator</div>
+        <div class="project-desc">
+          A native Android app (Mobile Technology coursework) that estimates monthly electricity bills from usage and rebate inputs.
+          <ul>
+            <li>Calculates tiered block-rate charges from units used, then applies a 0–5% rebate</li>
+            <li>Stores every calculation in a local SQLite database, browsable in a list view by month with a tap-through detail page</li>
+            <li>Includes input validation, helpful error messages, custom theming/icons, and an About page</li>
+          </ul>
+        </div>
+        <div class="project-stack"><span>Java</span><span>Android Studio</span><span>SQLite</span></div>
+        <div class="shot-placeholder">📸 Add an app screenshot here</div>
+        <div class="project-links">
+          <a href="https://github.com/Farishakamal/ElectricityBillApp" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section wrap" id="credentials" data-reveal style="padding-top:0;">
+  <div class="section-eyebrow">03 · Credentials</div>
+  <h2 class="section-title">Certifications & <em>activities</em></h2>
+  <div class="two-col">
+    <div class="list-panel">
+      <h3>Training & Certification</h3>
+      <ul>
+        <li><span>Oracle Academy — Database Programming with SQL</span></li>
+        <li><span>Oracle Academy — Database Design</span></li>
+        <li><span>Power BI Certification</span></li>
+      </ul>
+    </div>
+    <div class="list-panel">
+      <h3>Activities & Involvement</h3>
+      <ul>
+        <li><span>Dean's List Awardee</span><span class="li-date">×2 semesters</span></li>
+        <li><span>Industrial Case Study Visit — Yakult Factory</span><span class="li-date">Jul 2025</span></li>
+        <li><span>Content Creator Digital Bootcamp</span><span class="li-date">Oct 2025</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="education" data-reveal style="padding-top:0;">
+  <div class="section-eyebrow">04 · Education</div>
+  <h2 class="section-title">Academic <em>background</em></h2>
+  <div class="list-panel">
+    <div class="edu-item">
+      <div class="yr">2023 — 2026</div>
+      <div>
+        <h4>Universiti Teknologi MARA (UiTM), Shah Alam</h4>
+        <p>Bachelor of Information Technology (Hons.), Big Data track · CGPA 3.22 · Dean's List ×2</p>
+      </div>
+    </div>
+    <div class="edu-item">
+      <div class="yr">2020 — 2022</div>
+      <div>
+        <h4>SMK Datuk Menteri, Ayer Hitam, Johor</h4>
+        <p>Sijil Tinggi Persekolahan Malaysia (STPM) · CGPA 3.25 · MUET Band 3</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-band" id="contact" data-reveal>
+  <div class="wrap">
+    <h2 class="contact-title">Let's build something <em>with data.</em></h2>
+    <p class="contact-sub">I've just finished my internship and I'm ready for full-time opportunities in data, analytics, or software. Reach out any of these ways:</p>
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/nurfarisha-kamal-211b3b382" target="_blank" rel="noopener" class="contact-row">
+        <span class="lbl">LinkedIn</span><span>linkedin.com/in/nurfarisha-kamal-211b3b382 ↗</span>
+      </a>
+      <a href="mailto:nurfarisha024@gmail.com" class="contact-row">
+        <span class="lbl">Email</span><span>nurfarisha024@gmail.com</span>
+      </a>
+      <a href="tel:+60178424240" class="contact-row">
+        <span class="lbl">Phone</span><span>017-842 4240</span>
+      </a>
+      <a href="https://github.com/Farishakamal" target="_blank" rel="noopener" class="contact-row">
+        <span class="lbl">GitHub</span><span>github.com/Farishakamal ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Nurfarisha Binti Mohd Kamal · Built with data, curiosity, and a bit of SQL.
+</footer>
+
+<script>
+  const els = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:0.1});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
